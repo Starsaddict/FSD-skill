@@ -27,6 +27,7 @@ description: "将浏览器真实界面状态转化为可编辑原生 Sketch（.s
 | 浏览器真实状态采集（DOM / Shadow Root / A11y）、应用页重建、**展开菜单防遮挡错位排布**、大屏看板重建与一致脱敏数据集构造 | [`references/capture-and-reconstruction.md`](references/capture-and-reconstruction.md) |
 | 使用 macOS `sketchtool run-script` 与 `require('sketch/dom')` 生成原生图层/矢量图表，以及导出与零警告核验 | [`references/native-sketch-api.md`](references/native-sketch-api.md) |
 | 对用户已有的 `.sketch` 文件做画板边界裁切、壳层局部刷新（保留内嵌产品锁定层）或归档级精准修改 | [`references/frame-fitting-and-archive.md`](references/frame-fitting-and-archive.md) |
+| 用户主动要求评估 Skill 缺陷或起草脱敏改进反馈（日常使用完全静默，不主动打扰） | [`references/skill-feedback.md`](references/skill-feedback.md) |
 
 ---
 
@@ -70,3 +71,10 @@ description: "将浏览器真实界面状态转化为可编辑原生 Sketch（.s
 2. **导出与目视核验**：通过 `sketchtool export artboards FILE --output=DIR --formats=png --scales=1` 导出 PNG，零字体警告；放大目视核对密集表格、表单字段、单行截断是否仍保持单行、展开菜单是否与下移标题留足空隙、底部账号栏未被裁切。
 3. **浏览器环境复原**：若采集过程中切换过标签页、路由、菜单状态或视口覆写，交付前必须完整恢复初始状态并断开连接。
 4. **诚实披露缺口**：近似替代的 Logo/图标/头像须在交付说明中披露；无法采集的缺失页面或受阻内嵌内容如实注明，绝不冒充完整复现。
+
+---
+
+## 规范改进反馈（低侵入）
+
+- **个案静默**：仅针对当前页面的单次构图或文案调整，直接执行，不提 Skill 反馈。
+- **轻度触发**：仅当用户**明确质疑或推翻本 Skill 采集/重建/裁框规范本身**（疑似不完整、不适配场景、口径有问题或过于死板），才在完成修改后的回复末尾附一句简短提示（*“注：这似乎涉及本 Skill 规范本身，如需反馈改进，可让我生成一份脱敏 Issue 草稿。”*），绝不反复追问或擅自调 `gh` 提交；用户要求起草反馈时再读取 [`references/skill-feedback.md`](references/skill-feedback.md)。

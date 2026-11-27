@@ -21,20 +21,23 @@ FSD-skill/
     │       ├── component-templates.md     # 11 类高频界面与业务组件写作模板（含固定章节报告）
     │       ├── placeholder-protocol.md    # 通用视觉高亮块 Placeholder 规范
     │       ├── code-sync-guide.md         # 从前端到后端扫描代码仓与 FSD vs. Code 双向审校协议
-    │       └── qa-checklist.md            # P0 / P1 / P2 分级质检清单
+    │       ├── qa-checklist.md            # P0 / P1 / P2 分级质检清单
+    │       └── skill-feedback.md          # 低侵入反馈：Skill 缺陷归因与脱敏 Issue 草稿协议
     ├── fsd-diagram/                       # 图表与白板美学 Skill：5 类 FSD 原型 + 4+1 配色 + 可选飞书画板适配
     │   ├── SKILL.md
     │   └── references/
     │       ├── diagram-archetypes.md      # 5 类 FSD 高频图表选型思路与版面骨架
     │       ├── style-tokens.md            # 实测 4+1 语义色板、4 色连线/Pill 标签、字号与防碰撞数值
     │       ├── feishu-whiteboard.md       # 可选：飞书画板渲染自检与原生节点局部增删流程
-    │       └── board-roundtrip.md         # 可选：已有飞书画板备份、几何重建与文本合并规范
+    │       ├── board-roundtrip.md         # 可选：已有飞书画板备份、几何重建与文本合并规范
+    │       └── skill-feedback.md          # 低侵入反馈：Skill 缺陷归因与脱敏 Issue 草稿协议
     └── fsd-sketch/                        # 界面原型与插图 Skill：网页真实状态 → 可编辑原生 .sketch + PNG
         ├── SKILL.md
         └── references/
             ├── capture-and-reconstruction.md  # 浏览器采集、页面重建、展开菜单防遮挡错位、看板一致样本数据
             ├── native-sketch-api.md           # macOS sketchtool API 实测避坑、原生矢量图表与零警告核验
-            └── frame-fitting-and-archive.md   # 已有 .sketch 精准裁框、归档微调与壳层锁定层保护
+            ├── frame-fitting-and-archive.md   # 已有 .sketch 精准裁框、归档微调与壳层锁定层保护
+            └── skill-feedback.md              # 低侵入反馈：Skill 缺陷归因与脱敏 Issue 草稿协议
 ```
 
 ---
@@ -84,3 +87,12 @@ npx skills add Starsaddict/FSD-skill
 - **质检模式（Mode 3）**：`用 fsd-writer 的 QA 模式检查这份 FSD 草稿，按 P0/P1/P2 输出体检报告。`
 - **图表 / 白板绘制**：`用 fsd-diagram 按这份 FSD 里的 [VISUAL-PLACEHOLDER | TYPE: diagram] 规格绘制状态迁移图。`
 - **界面 Sketch 与入口标注**：`用 fsd-sketch 采集当前浏览器页面状态并生成可编辑 .sketch 与 FSD 入口标注 PNG（展开菜单避免遮挡左侧导航）。`
+
+---
+
+## 反馈与共建（Feedback & Contributing）
+
+三个 Skill 均内置了**低侵入、克制触发**的 `references/skill-feedback.md` 规范：
+- **日常个案静默**：针对当前项目的业务数值、字段或文案微调，Agent 直接执行，绝不打断写作或弹窗；
+- **轻度提醒**：仅当你明确质疑或推翻某条 Skill 规则/模板本身时，Agent 会在回复最末附一句极短提示，告知可按需生成脱敏 Issue 草稿（绝不自动连接 GitHub 提交）；
+- **主动随时可用**：你也可以随时对 Agent 说一句 `帮我评估刚才这个改动算不算 Skill 缺陷并起草脱敏 Issue`，Agent 会按 4 类标签（`incomplete` / `mismatch` / `definition-issue` / `too-rigid`）归因，**强制剥离一切客户名、内网地址与业务数据**后输出标准 Issue 草稿，经你审阅后再决定是否提交至本仓库 Issues。

@@ -30,6 +30,7 @@ description: "通用、平台无关的功能规格说明书（FSD）写作、代
 | 在正文中插入截图/Sketch/流程图占位符，或准备将占位符交由人工/子 Skill 补图与回填 | [`references/placeholder-protocol.md`](references/placeholder-protocol.md) |
 | **Mode 2（Code-Sync）**：按“从前端到后端”思路结合研发代码仓生成 FSD 初稿，或对现有 FSD 与代码仓做双向差异审校 | [`references/code-sync-guide.md`](references/code-sync-guide.md) |
 | **Mode 3（QA）**：对已有 FSD 做全面质检，或在起草/精修完成后执行出厂自检 | [`references/qa-checklist.md`](references/qa-checklist.md) |
+| 用户主动要求评估 Skill 缺陷或起草脱敏改进反馈（日常使用完全静默，不主动打扰） | [`references/skill-feedback.md`](references/skill-feedback.md) |
 
 > 完整的人类可读标准范本与指南位于仓库根目录的 [`../../docs/fsd-guide.md`](../../docs/fsd-guide.md)。
 
@@ -99,3 +100,10 @@ description: "通用、平台无关的功能规格说明书（FSD）写作、代
    - 逐条列出问题位置、违反条款、具体问题说明与**可直接落地的修改建议**
    - 列出需业务/研发确认的 `[Open Check]` 汇总清单
 4. **停下等用户确认修复范围**，获同意后再按项修改正文。
+
+---
+
+## 规范改进反馈（低侵入）
+
+- **个案静默**：仅针对当前项目的业务数值、字段名或文案微调，直接执行，不提 Skill 反馈。
+- **轻度触发**：仅当用户**明确质疑或推翻本 Skill 规则/模板本身**（疑似不完整、不适配场景、口径有问题或过于死板），才在完成修改后的回复末尾附一句简短提示（*“注：这似乎涉及本 Skill 规范本身，如需反馈改进，可让我生成一份脱敏 Issue 草稿。”*），绝不反复追问或擅自调 `gh` 提交；用户要求起草反馈时再读取 [`references/skill-feedback.md`](references/skill-feedback.md)。

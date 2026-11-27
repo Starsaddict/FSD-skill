@@ -28,6 +28,7 @@ description: "通用、平台无关的 FSD 流程图 / 泳道图 / 状态迁移�
 | 查精确色值（5 套主题色板 + 4 色语义连线与 Pill 标签）、字号层级、间距与避障数值、反例对照 | [`references/style-tokens.md`](references/style-tokens.md) |
 | 需要将 SVG 渲染检查并写入/局部修改**飞书云文档画板**（`@larksuite/whiteboard-cli` + `lark-cli`） | [`references/feishu-whiteboard.md`](references/feishu-whiteboard.md) |
 | 需要对**已有飞书画板**做 round-trip 备份、局部增删节点、几何保真重建或碎片文本合并 | [`references/board-roundtrip.md`](references/board-roundtrip.md) |
+| 用户主动要求评估 Skill 缺陷或起草脱敏改进反馈（日常使用完全静默，不主动打扰） | [`references/skill-feedback.md`](references/skill-feedback.md) |
 
 ---
 
@@ -83,3 +84,10 @@ description: "通用、平台无关的 FSD 流程图 / 泳道图 / 状态迁移�
 4. **交付或发布到目标平台**：
    - **通用 Markdown / Notion / Word**：直接交付 SVG / 高清 PNG，按 Placeholder 图注回填。
    - **飞书云文档画板**：按 `references/feishu-whiteboard.md` 与 `references/board-roundtrip.md` 执行备份、局部增删（或已授权的整板写入），并在写入后导出 `raw` 与真实 `preview` 做二次目视核验。
+
+---
+
+## 规范改进反馈（低侵入）
+
+- **个案静默**：仅针对当前图表的具体节点文案或单次构图微调，直接执行，不提 Skill 反馈。
+- **轻度触发**：仅当用户**明确质疑或推翻本 Skill 配色/版式/防碰撞规范本身**（疑似不完整、不适配场景、口径有问题或过于死板），才在完成修改后的回复末尾附一句简短提示（*“注：这似乎涉及本 Skill 规范本身，如需反馈改进，可让我生成一份脱敏 Issue 草稿。”*），绝不反复追问或擅自调 `gh` 提交；用户要求起草反馈时再读取 [`references/skill-feedback.md`](references/skill-feedback.md)。
