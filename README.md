@@ -69,24 +69,38 @@ FSD-skill/
 
 ---
 
+## 三种核心使用场景
+
+| 场景 | 适用角色与时机 | 核心协作方式与产出 |
+|---|---|---|
+| **场景 1：从产品思路起草 FSD**<br/>（`Draft Mode`） | 产品 / 方案已完成需求构思、手头有笔记、原型描述或会议纪要，准备落成规范 FSD | 忠实转化已有思路（不替代构思）→ 先轻整理 User Journey 与多 Feature 目录大纲由人工确认 → 按 11 类组件模板逐章起草 → 图位插入通用高亮块 Placeholder（正文定稿后再按需配合 `fsd-diagram` / `fsd-sketch` 补图） |
+| **场景 2：结合研发代码仓生成 / 双向审校 FSD**<br/>（`Code-Sync Mode`） | 研发或产品已有代码实现，需**逆向补齐客户交付级 FSD**，或将**代码与现有 FSD 双向核对** | 遵循**从前端到后端**思路（前端还原用户视角体验骨架 → 后端与 Prompt 补充业务规则、计算口径与校验，严防表结构/类名/内部 API 泄漏）；双向审校时不盲目迁就代码改写 FSD，规则/口径出入默认标 `[Review for Dev Fix]` 供研发审核是否按 FSD 修正业务实现，人工拍板后双轨产出文档更新与研发待修复清单 |
+| **场景 3：对已有 FSD 做评审前全面质检**<br/>（`QA Mode`） | FSD 初稿完成后、客户或研发正式评审前自查，或对存量 FSD 做规范体检 | 对照 18 条 **P0（阻断）/ P1（重要）/ P2（规范）** 清单逐项扫描（状态枚举唯一性、跨系统关闭联动、高危操作护栏、公式与空值留白、图文语言 100% 一致、Purpose 先行、固定章节报告、Anti-Scope 边界等）→ 输出分级体检报告与 `[Open Check]` 汇总，经确认后按项修复 |
+
+---
+
 ## 安装与使用
 
-### 安装 Skill
-本仓库遵循标准 Agent Skills 目录结构（`skills/<skill-name>/SKILL.md`），可直接通过支持 Agent Skills 的工具安装：
+### 安装与按需更新
+本仓库遵循标准 Agent Skills 目录结构（`skills/<skill-name>/SKILL.md`），可直接通过支持 Agent Skills 的工具安装（本 Skill 持续迭代中，每次使用前可按需重新执行命令更新至最新版本）：
 
 ```bash
-# 使用 skills CLI（如 Claude Code / Cursor / Codex / Antigravity 等）
+# 安装或按需更新（支持 Claude Code / Cursor / Codex / Antigravity 等）
 npx skills add Starsaddict/FSD-skill
 ```
 
-或将 `skills/fsd-writer/`、`skills/fsd-diagram/`、`skills/fsd-sketch/` 目录直接复制到对应工具的 skills 目录中。
+或直接将 `skills/fsd-writer/`、`skills/fsd-diagram/`、`skills/fsd-sketch/` 复制到对应工具的 skills 目录中。
 
-### 典型调用示例
-- **起草模式（Mode 1）**：`用 fsd-writer 帮我把这份产品笔记整理成英文 FSD，先出目录大纲给我确认。`
-- **代码仓生成 / 双向审校（Mode 2）**：`用 fsd-writer 的 Code-Sync 模式从前端到后端扫描当前仓库的告警分诊模块，对照我现有的 FSD 输出双向差异审校清单。`
-- **质检模式（Mode 3）**：`用 fsd-writer 的 QA 模式检查这份 FSD 草稿，按 P0/P1/P2 输出体检报告。`
-- **图表 / 白板绘制**：`用 fsd-diagram 按这份 FSD 里的 [VISUAL-PLACEHOLDER | TYPE: diagram] 规格绘制状态迁移图。`
-- **界面 Sketch 与入口标注**：`用 fsd-sketch 采集当前浏览器页面状态并生成可编辑 .sketch 与 FSD 入口标注 PNG（展开菜单避免遮挡左侧导航）。`
+### 各场景典型调用示例
+- **场景 1 — 起草 FSD（Draft Mode）**：
+  > `用 fsd-writer 帮我把这份产品笔记整理成英文 FSD，先出目录大纲给我确认。`
+- **场景 2 — 代码仓生成 / 双向审校（Code-Sync Mode）**：
+  > `用 fsd-writer 的 Code-Sync 模式从前端到后端扫描当前仓库的告警分诊模块，对照我现有的 FSD 输出双向差异审校清单。`
+- **场景 3 — 交付前质检（QA Mode）**：
+  > `用 fsd-writer 的 QA 模式检查这份 FSD 草稿，按 P0/P1/P2 输出体检报告。`
+- **配套补图（可选）**：
+  - 图表 / 白板：`用 fsd-diagram 按这份 FSD 里的 [VISUAL-PLACEHOLDER | TYPE: diagram] 规格绘制状态迁移图。`
+  - 界面 Sketch / 入口标注：`用 fsd-sketch 采集当前浏览器页面状态并生成可编辑 .sketch 与 FSD 入口标注 PNG（展开菜单避免遮挡左侧导航）。`
 
 ---
 
